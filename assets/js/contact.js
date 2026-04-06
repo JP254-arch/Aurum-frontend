@@ -3,29 +3,29 @@
    ═══════════════════════════════════════════════ */
 
 const LOCATIONS = {
-  milan: {
-    address: '12 Via della Luce<br>Milan 20121, Italy',
+  Nairobi: {
+    address: '12 st JP Street<br>Nairobi 20121, Nairobi',
     hours: 'Tuesday – Sunday<br>Lunch: 12:00 – 15:00<br>Dinner: 19:00 – 23:30<br><span style="color:var(--gray);font-size:0.75rem;">Closed Mondays</span>',
-    phone: '+39 02 8765 4321',
-    phoneHref: 'tel:+390287654321',
-    whatsapp: 'https://wa.me/390287654321',
-    mapLabel: '12 Via della Luce · Milano',
-    mapLink: 'https://maps.google.com/?q=Aurum+Ristorante+Milan',
-    locationId: 'milan',
+    phone: '+254 740 623 879',
+    phoneHref: 'tel:+254 740 623 879',
+    whatsapp: 'https://wa.me/254740623879',
+    mapLabel: '12 st JP Street · Nairobi',
+    mapLink: 'https://maps.google.com/?q=Aurum+Ristorante+Nairobi',
+    locationId: 'Nairobi',
   },
-  paris: {
+  Paris: {
     address: '5 Rue Saint-Honoré<br>Paris 75001, France',
     hours: 'Tuesday – Sunday<br>Lunch: 12:00 – 14:30<br>Dinner: 19:00 – 23:00<br><span style="color:var(--gray);font-size:0.75rem;">Closed Mondays</span>',
-    phone: '+33 1 4265 1234',
-    phoneHref: 'tel:+33142651234',
-    whatsapp: 'https://wa.me/33142651234',
+    phone: '+254 740 623 879',
+    phoneHref: 'tel:+254 740 623 879',
+    whatsapp: 'https://wa.me/254740623879',
     mapLabel: '5 Rue Saint-Honoré · Paris',
     mapLink: 'https://maps.google.com/?q=Aurum+Ristorante+Paris',
-    locationId: 'paris',
+    locationId: 'Paris',
   },
 };
 
-let activeLocation = 'milan';
+let activeLocation = 'Nairobi';
 
 async function switchLocation(locId) {
   activeLocation = locId;

@@ -68,9 +68,9 @@ const FOOTER_HTML = `
       </ul>
     </div>
     <div>
-      <div class="footer-col-title">Milano</div>
-      <div class="footer-contact-item"><strong>Address</strong>12 Via della Luce, 20121</div>
-      <div class="footer-contact-item"><strong>Phone</strong>+39 02 8765 4321</div>
+      <div class="footer-col-title">Nairobi</div>
+      <div class="footer-contact-item"><strong>Address</strong>12 st JP Street, 20121</div>
+      <div class="footer-contact-item"><strong>Phone</strong>+254 740 623 879</div>
       <div class="footer-contact-item"><strong>Hours</strong>Tue–Sun 12:00–15:00<br>19:00–23:30</div>
     </div>
     <div>
@@ -139,7 +139,7 @@ function initScrollReveal() {
 }
 
 // ── OPEN / CLOSED BADGE ──────────────────────────────────
-async function renderOpenBadge(targetEl, locationId = 'milan') {
+async function renderOpenBadge(targetEl, locationId = 'Nairobi') {
   if (!targetEl) return;
   try {
     const data = await api.get(`/api/locations/${locationId}/hours`);
