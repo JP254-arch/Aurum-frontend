@@ -5,7 +5,7 @@
 
 // ── API CONFIG ───────────────────────────────────────────
 // Change this to your deployed Render URL after deployment
-const API_BASE = 'https://aurum-30eg.onrender.com/';
+const API_BASE = 'https://aurum-30eg.onrender.com';
 
 // ── API HELPER ───────────────────────────────────────────
 const api = {
