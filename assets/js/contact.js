@@ -150,16 +150,23 @@ async function handleReservation(e) {
   const body = Object.fromEntries(new FormData(form).entries());
 
   try {
-    const data = await api.post("/api/reservations", body);
-    if (data.success) {
-      // Inline message
+    const { status, data } = await api.post("/api/reservations", body);
+
+    if (status === 429) {
+      msg.className = "form-msg error";
+      msg.textContent = "Too many attempts. Please try again in an hour.";
+      showToast(
+        "error",
+        "Too Many Attempts",
+        "Please wait before submitting again."
+      );
+    } else if (data.success) {
       msg.className = "form-msg success";
       msg.textContent = `✓ ${data.message} Confirmation: ${data.confirmationId}`;
       form.reset();
       document.querySelector('input[name="date"]').min = new Date()
         .toISOString()
         .split("T")[0];
-      // Toast
       showToast(
         "success",
         "Reservation Requested",
@@ -188,6 +195,62 @@ async function handleReservation(e) {
   } finally {
     btn.disabled = false;
     btn.textContent = "Request Reservation →";
+  }
+}
+
+// ── CONTACT SUBMIT ────────────────────────────────────────
+async function handleContact(e) {
+  e.preventDefault();
+  const btn = document.getElementById("btn-contact");
+  const msg = document.getElementById("msg-contact");
+  const form = document.getElementById("form-contact");
+
+  btn.disabled = true;
+  btn.textContent = "Sending…";
+  msg.className = "form-msg";
+  msg.textContent = "";
+
+  const body = Object.fromEntries(new FormData(form).entries());
+
+  try {
+    const { status, data } = await api.post("/api/contact", body);
+
+    if (status === 429) {
+      msg.className = "form-msg error";
+      msg.textContent = "Too many attempts. Please try again in an hour.";
+      showToast(
+        "error",
+        "Too Many Attempts",
+        "Please wait a while before sending another message."
+      );
+    } else if (data.success) {
+      msg.className = "form-msg success";
+      msg.textContent = `✓ ${data.message}`;
+      form.reset();
+      showToast(
+        "success",
+        "Message Sent",
+        "We'll get back to you within 24 hours."
+      );
+    } else {
+      const err = data.errors
+        ? data.errors.map((e) => e.msg).join(", ")
+        : data.message;
+      msg.className = "form-msg error";
+      msg.textContent = err || "Something went wrong.";
+      showToast(
+        "error",
+        "Send Failed",
+        err || "Please check your details and try again."
+      );
+    }
+  } catch {
+    msg.className = "form-msg error";
+    msg.textContent = "Connection error. Please email us directly.";
+    showToast("error", "Connection Error", "Please email us directly.");
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Send Message →";
   }
 }
 
